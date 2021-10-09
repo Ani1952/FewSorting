@@ -48,9 +48,7 @@ bool solve(int mat[][9], int i, int j)
 	if (i == 9)
 	{ //if row overflow
 		printsudoku(mat);
-		cout << endl
-			 << endl
-			 << endl;
+		cout << endl << endl<< endl;
 		return true;
 	}
 
@@ -81,7 +79,7 @@ bool solve(int mat[][9], int i, int j)
 
 int main()
 {
-	int grid[9][9] = {{2, 0, 0, 0, 0, 0, 0, 0, 0},
+	int grid[9][9] =                 {{2, 0, 0, 0, 0, 0, 0, 0, 0},
 					  {1, 0, 7, 4, 0, 0, 0, 0, 3},
 					  {3, 0, 0, 2, 0, 0, 0, 5, 0},
 					  {0, 0, 5, 0, 2, 0, 0, 0, 0},
