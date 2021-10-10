@@ -34,7 +34,7 @@ void printsudoku(int mat[][9])
 	{
 		for (int j = 0; j < 9; j++)
 		{
-			cout << mat[i][j] << " ";
+			cout <<"|"<< mat[i][j] << "|";
 		}
 		cout << endl;
 	}
