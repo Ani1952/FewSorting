@@ -8,6 +8,8 @@ void merge(int a[], int m, int l, int h)
 	int j = m + 1;
 	int k = l;
 	int *b = new int(h + 1);
+
+	// checkers between two halves
 	while (i <= m && j <= h)
 	{
 		if (a[i] < a[j])
@@ -23,6 +25,8 @@ void merge(int a[], int m, int l, int h)
 			k++;
 		}
 	}
+
+	// copy as is if one half empties
 	while (i <= m)
 	{
 		b[k] = a[i];
@@ -36,6 +40,8 @@ void merge(int a[], int m, int l, int h)
 		j++;
 		k++;
 	}
+
+	// b back to a
 	for (i = l; i <= h; i++)
 	{
 		a[i] = b[i];
