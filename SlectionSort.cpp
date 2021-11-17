@@ -13,6 +13,7 @@ void SelectionSort(int a[], int n)
 				min = j;
 			swap(a[j], a[min]);
 		}
+		printf(" Pass No %d",i);
 	}
 
 	for (int i = 0; i < n; i++)
