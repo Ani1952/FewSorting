@@ -51,7 +51,7 @@ void quickSort(int A[], int low, int high)
 int main()
 {
     int n, x;
-    cout << "Enter the size of the array" << endl;
+    cout << "Enter the size of the array" <<endl;
     cin >> n;
     int *arr = new int[n];
     cout << "Enter the elements of the array" << endl;
