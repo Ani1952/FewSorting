@@ -66,34 +66,27 @@ Node *MS(Node *head)
     return merge(a, b);
 }
 
-void SetData(Node **head, int n)
+void print(Node *head)
 {
-    cout << "Enter the Elements of the list" << endl;
-    int new_data;
-    for (int i = 0; i < n; i++)
+    while (head != NULL)
     {
-        cin >> new_data;
-        Node *new_node = new Node();
-        new_node->data = new_data;
-        new_node->next = (*head);
-        (*head) = new_node;
+        cout << head->data << "-->";
+        head = head->next;
     }
-}
-
-void print(Node* head){
-    while(head!=NULL){
-        cout<<head->data<<"-->";
-        head=head->next;
-    }
-    cout<<endl;
+    cout << endl;
 }
 int main()
 {
-    Node *head=NULL;
-    int n;
-    cout<<"Enter The Size Of the 1st Linked List  :"<<endl;
-    cin>>n;
-    SetData(&head,n);
+    Node *head = NULL;
+    int n,x;
+    cout << "Enter The Size Of the Linked List  :" << endl;
+    cin >> x;
+    cout << "Enter the Elements of the list" << endl;
+    for (int i = 0; i <=n; i++)
+    {
+        cin >> x;
+        push(&head, x);
+    }
     print(head);
     MS(head);
     print(head);
