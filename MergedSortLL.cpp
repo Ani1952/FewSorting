@@ -8,6 +8,20 @@ public:
     Node *next = NULL;
 };
 
+void SetData(Node **head_ref, int n)
+{
+    cout << "Enter Node data" << endl;
+    int new_data;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> new_data;
+        Node *new_node = new Node();
+        new_node->data = new_data;
+        new_node->next = (*head_ref);
+        (*head_ref) = new_node;
+    }
+}
+
 void push(Node **head, int data)
 {
     Node *new_node = new Node();
@@ -16,58 +30,60 @@ void push(Node **head, int data)
     (*head) = new_node;
 }
 
-Node *merge(Node *a, Node *b)
-{
-    if (a == NULL)
-        return b;
-    if (b == NULL)
-        return a;
-    Node *c;
-    if (a->data < b->data)
-    {
-        c = a;
-        c->next = merge(a->next, b);
-    }
-    else
-    {
-        c = b;
-        c->next = merge(a, b->next);
-    }
+Node* merge(Node *a, Node* b){
+	//Complete this method
+	//base case
+	if(a==NULL){
+		return b;
+	}
+	if(b==NULL){
+		return a;
+	}
 
-    return c;
+	//rec case
+	Node * c;
+
+	if(a->data < b->data){
+		c = a;
+		c->next = merge(a->next,b);
+	}
+	else{
+		c = b;
+		c->next = merge(a,b->next);
+	}
+	return c;
 }
 
-Node *midPoint(Node *head)
-{
-    Node *s = head;
-    Node *f = head->next;
-    while (f != NULL && f->next != NULL)
-    {
-        f = f->next->next;
-        s = s->next;
-    }
-    return s;
-}
 
-Node *MS(Node *head)
-{
-    if (head == NULL || head->next == NULL)
-        return head;
+Node* mergeSort(Node * head){
 
-    Node *mid = midPoint(head);
+	if(head==NULL ){
+		return head;
+	}
 
-    Node *a = head;
-    Node *b = mid->next;
-    mid->next = NULL;
+	Node * slow = head;
+	Node * fast = head->next;
 
-    a = MS(a);
-    b = MS(b);
+	while(fast!=NULL and fast->next!=NULL){
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	Node *mid=slow;
 
-    return merge(a, b);
+	Node * a = head;
+	Node * b = mid->next;
+	mid->next = NULL;
+
+	a = mergeSort(a);
+	b = mergeSort(b);
+
+	return merge(a,b);
+
 }
 
 void print(Node *head)
 {
+
     while (head != NULL)
     {
         cout << head->data << "-->";
@@ -77,18 +93,13 @@ void print(Node *head)
 }
 int main()
 {
+    int size;
     Node *head = NULL;
-    int n,x;
-    cout << "Enter The Size Of the Linked List  :" << endl;
-    cin >> x;
-    cout << "Enter the Elements of the list" << endl;
-    for (int i = 0; i <=n; i++)
-    {
-        cin >> x;
-        push(&head, x);
-    }
+    cout << "Enter the length of linked list" << endl;
+    cin >> size;
+    SetData(&head, size);
     print(head);
-    MS(head);
+    mergeSort(head);
     print(head);
 
     return 0;
